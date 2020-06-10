@@ -10,7 +10,7 @@ But Knowledge is a broad term, different types of knowledge are existing [3][4] 
 * __Declarative Knowledge__ – Its about statements that describe a particular object and its attributes , including some behavior in relation with it. 
 * __Structural Knowledge__ – Describes what relationship exists between concepts/ objects.
 <p align="center">
-  <img width="400" height="300" src="knowledge-representation-in-ai.png">
+  <img width="350" height="300" src="knowledge-representation-in-ai.png">
 </p>
 
 ## Techniques of Knowledge Representation in AI
@@ -31,7 +31,7 @@ This representation consist of mainly two types of relations:
 * IS-A relation (Inheritance)
 * Kind-of-relation
 <p align="center">
-  <img width="300" height="300" src="semantic.png">
+  <img width="300" height="275" src="semantic.png">
 </p>
 
 ### Production Rules
@@ -46,10 +46,13 @@ If there is a new situation (state) generates, then multiple production rules wi
 ### Frame Representation
 A frame is a record like structure which consists of a collection of attributes and its values to describe an entity in the world. Frames are the AI data structure which divides knowledge into substructures by representing stereotypes situations. It consists of a collection of slots and slot values. These slots may be of any type and sizes. Slots have names and values which are called facets. 
 <p align="center">
-  <img width="400" height="300" src="frame.png">
+  <img width="400" height="250" src="frame.png">
 </p>
 
-## Bibliografía
-Para el desarrollo del siguiente trabajo se han consultado los siguientes enlaces:  
-* [P-99: Ninety-Nine Prolog Problems](https://www.ic.unicamp.br/~meidanis/courses/mc336/2009s2/prolog/problemas/)
-* [Guías de Prolog](https://www.youtube.com/channel/UCdPmeK-zVtvYS4qX_Wa87Wg)
+## Bibliography
+
+* [[1] Knowledge representation's Wikipedia Page : ](https://en.wikipedia.org/wiki/Knowledge\_representation\_and\_reasoning/)
+* [[2] Knowledge Representation in AI](http://hdl.handle.net/2142/1300)
+* [[3] KR technics in AI](https://www.edureka.co/blog/knowledge-representation-in-ai/)
+* [[4] Types of KR](https://learneva.com/blog/types-of-knowledge-in-artificial-intelligence/)
+* [[5] Technics of KR](https://www.javatpoint.com/ai-techniques-of-knowledge-representation)
