@@ -9,151 +9,46 @@ But Knowledge is a broad term, different types of knowledge are existing [3][4] 
 * __Procedural Knowledge__ – Gives information/ knowledge about how to achieve something. 
 * __Declarative Knowledge__ – Its about statements that describe a particular object and its attributes , including some behavior in relation with it. 
 * __Structural Knowledge__ – Describes what relationship exists between concepts/ objects.
+<p align="center">
+  <img width="400" height="300" src="knowledge-representation-in-ai.png">
+</p>
 
 ## Techniques of Knowledge Representation in AI
 There are 4 techniques of knowledge representation [4][5]: 
 <p align="center">
-  <img width="300" height="300" src="knowledge-representation-in-ai.png">
+  <img width="400" height="300" src="technics.png">
 </p>
 
-## Predicados complementarios 
-En este apartado se explicarán los predicados/declaraciones de los que se valen cada una de las implementaciones para resolver el problema.
-### range( +A, +B, -L ) 
-*Es cierto si L unifica con una lista que contiene número enteros consecutivos empezando en A y terminando en B.*  
-Para el desarrollo de este predicado se ha usado la inducción matemática partiendo del caso base en el que la A y B son el mismo elemento. En cuyo caso L es una lista que contiene solo a A.  
-En otros casos mientras A sea menor que B, se realizan llamadas recursivas a si misma con A incrementada en 1. En cuyo caso L es una lista que tiene en la cabeza a A y en la cola la L obtenida de la llamada recursiva.  
-```
-range(A,A,[A]).  
-range(A,B,[A|L]):-  A < B, A1 is A+1,  range(A1,B,L). 
-```
-```
-?- range(1,5,L).  
-L = [1, 2, 3, 4, 5].
-```
-### del( +A, +B, -C ) 
-*Es cierto si C unifica con una lista que contiene a los elementos de B menos el elemento A.*  
-Para el desarrollo de esta función se ha usado la inducción matemática partiendo del caso base en el que el primer elemento de B es A. En cuyo caso C es una lista con los elementos del resto de B.  
-En otros casos realiza una llamada recursiva a si misma con el resto de B. En cuyo caso C es una lista que contiene en la cabeza la cabeza de B y en el resto la C obtenida de la llamada recursiva.  
-```
-del(A,[A|C],C).  
-del(A,[B|Bs],[B|Cs]):- del(A,Bs,Cs).  
-```
-```
-?- del(2,[1,2,3,4],C).  
-C = [1, 3, 4].  
-```
-### permu( +A, -B ) 
-*Es cierto si B unifica con una de las posibles permutaciones de los elementos de A.*  
-Para el desarrollo de esta función se ha usado la inducción matemática partiendo del caso base en el que A es una lista vacía. En cuyo caso C es una lista vacía.  
-En otros casos primero se elimina un elemento de A y se llama recursivamente a si mismo con el resto. En cuyo caso B es una lista que contiene al elemento eliminado en la cabeza y en el resto a la B obtenida de la llamada recursiva.  
-```
-permu([],[]).  
-permu(A,[B|Bs]):- del(B,A,Rs), permu(Rs,Bs).  
-```
-```
-?- permu([1,2],B).  
-B = [1, 2];  
-B = [2, 1].  
-```
-### test( +A, +B, +C, +D)
-*Es cierto si A unifica con una lista en la que cada uno de sus elementos no aparecen en las listas C y D. Conteniendo estas elementos de las diagonales de cada elemento de A.Y B es un contador para controlar el elemento de la lista en revisión.*  
-Para el desarrollo de esta función se ha usado la inducción matemática partiendo del caso base en el que A es una lista vacía. En cuyo es caso independientemente del contenido de los demás elementos la regla será verdadera.  
-En otros casos se comprobará si las diagonales del elemento en análisis no están en C (diagonal superior) y D (diagonal inferior). En caso positivo realizara una llamada recursiva a si mismo sin el elemento analizado, con B incrementada en 1 y añadiendo a C y D las diagonales calculadas anteriormente.  
-Debido a la presencia de un contador podemos observar que este predicado ha sido creado a partir de la programación iterativa. Y para su correcta ejecución se debe llamar con B = 1 y C,D = [] inicialmente.  
-Cabe destacar una función que no se ha dado en clase de Representación del Conocimiento de 2019-2020.  
-* memberchk( +G , +H ) Es cierto si H contiene al elemento G.
-```
-test([],_,_,_).  
-test([Y|Ys],X,Cs,Ds):- 
-C is X-Y, 
-\+ memberchk(C,Cs), 
-D is X+Y, 
-\+ memberchk(D,Ds), 
-X1 is X + 1, 
-test(Ys,X1,[C|Cs],[D|Ds]).
-```
-```
-?- test([2, 4, 1, 3], 1, [], []). 
-true
-```
-### test( +A )
-*Es cierto si A unifica con una lista que satisface las condiciones de test( A, 1, [], [] ).*  
-La única función de este predicado es llamar a test( +A, +B, +C, +D ) pasándole como parámetro A, el contador empezando en 1 y dos listas vacías que representan las listas de las diagonales. Para comprobar si este satisface las condiciones de  test( +A, +B, +C, +D ).  
-```
-test(Qs):- test(Qs,1,[],[]). 
-```
-```
-?- test([2, 4, 1, 3]). 
-true.
-```
-### permu_test( +A, +B, +C, +D, +E ) 
-*Es cierto si B unifica con una permutación de A en la que cada elemento no aparece en las listas D y E. Conteniendo estas a los elementos de las diagonales de cada uno de los elementos de B. Y C es un contador para controlar el elemento de la lista en revisión.*  
-Este predicado es una combinación de permu( +A, -B ) y  test( +A, +B, +C, +D).  
-Para el desarrollo de esta función se ha usado la inducción matemática partiendo del caso base en el que A y B son listas vacías. En cuyo caso independientemente del contenido de las demás variables devolverá verdadero.  
-En caso contrario se generará una permutación de la lista A (igual que en permu( +A, -B ))y se comprobará que las diagonales de cada uno de sus elementos no esta en las listas de las diagonales D y E  (igual que en test( +A, +B, +C, +D)).  
-Igual que en test( +A, +B, +C, +D ) observamos la presencia de un contador por lo que este predicado tambien ha sido creado a partir de la programación iterativa. Y para su correcta ejecución se debe llamar con C = 1 y D,E = [] inicialmente.  
-```
-permu_test([],[],_,_,_). 
-permu_test(Qs,[Y|Ys],X,Cs,Ds):-  
-del(Y,Qs,Rs),  
-C is X-Y,  
-\+ memberchk(C,Cs), 
-D is X+Y,  
-\+ memberchk(D,Ds), 
-X1 is X+1, 
-permu_test(Rs,Ys,X1,[C|Cs],[D|Ds]).
-```
-```
-?- permu_test([1, 2, 3, 4],Qs,1,[],[]). 
-Qs= [2, 4, 1, 3]. 
-```
-## Primera implementación
-queens_1( +N, -Qs).  
-*Es cierto si Qs unifica con una lista de N elementos en la que cada elemento representa la posición de una reina en una fila determinada. Siendo la posición ese elemento en la lista la columna esa reina.*  
-En esta implementación se usan los siguientes predicados:  
-* range( +A, +B, -L ): se usa para generar una lista de elementos de 1 a N. 
-* permu( +A, -B ): se usa para generar una permutación de los elementos de la lista generada con range( +A, +B, -L ). 
-* Test( +Qs ): se usa para comprobar si la permutación generada con permu( + A, -B ) es una solución valida del problema.
-```
-queens_1(N,Qs):-  
-range(1,N,Rs),  
-permu(Rs,Qs),  
-test(Qs).
-```
-```
-?- queens_1(4,Qs). 
-Qs = [2, 4, 1, 3].
-```
-## Segunda implementación
-queens_2( +N, -Qs).
-*Es cierto si Qs unifica con una lista de N elementos en la que cada elemento representa la posición de una reina en una fila determinada. Siendo la posición ese elemento en la lista la columna esa reina*  
-En esta implementación se usan los siguientes predicados:  
-* range( +A, +B, -L ): se usa para generar una lista de elementos de 1 a N. 
-* permu_test: se usa para ir generar permutaciones de los elementos de la lista generada con range( +A, +B, -L ) y al mismo tiempo ir comprobando si una permutación es una solución valida.
-```
-queens_2(N,Qs):-
-range(1,N,Rs), 
-permu_test(Rs,Qs,1,[],[]). 
-```
-```
-?- queens_2(5,Qs). 
-Qs = [1, 3, 5, 2, 4]. 
-```
-## Pruebas de ejecución
+### Logical Representation 
+Logical representation is a language with some concrete rules which deals with propositions and has no ambiguity in representation. Logical representation means drawing a conclusion based on various conditions. This representation lays down some important communication rules. It consists of precisely defined syntax and semantics which supports the sound inference. Each sentence can be translated into logics using syntax and semantics. 
+* __Syntax__ are the rules which decide how we can construct legal sentences in the logic.
+* __Semantics__ are the rules by which we can interpret the sentence in the logic.
+
+
+### Semantic Networks 
+Semantic networks are alternative of predicate logic for knowledge representation. In Semantic networks, we can represent our knowledge in the form of graphical networks. This network consists of nodes representing objects and arcs which describe the relationship between those objects. Semantic networks can categorize the object in different forms and can also link those objects. Semantic networks are easy to understand and can be easily extended. 
+This representation consist of mainly two types of relations:
+* IS-A relation (Inheritance)
+* Kind-of-relation
 <p align="center">
-  <img width="500" height="600" src="Imagenes/Reinas2.png">
+  <img width="300" height="300" src="semantic.png">
 </p>
-Se puede observar que ninguna de las reinas esta en conflicto con otra y  las dos implementaciones nos dan la misma solución 
 
-## Posibles mejoras
-### Eliminar llamadas innecesarias a predicados en queens_1
-Esta mejora se basa en dejar de usar el predicado test(+A) en el predicado queens_1(+N,-Qs) y usar directamente el predicado test( +A, +B, +C, +D ). Lo que no altera ni el resultado ni la definición del predicado.  
-```
-queens_1(N,Qs):-  
-range(1,N,Rs),  
-permu(Rs,Qs),  
-test(Qs,1,[],[]). 
-```
+### Production Rules
+Production rules system consist of condition/action pairs which mean, "If condition then action". It has three parts:
+* The set of production rules
+* Working Memory
+* The recognize-act-cycle
+In __production rules__ it checks for the condition and if the condition exists then production rule fires and corresponding action is carried out. The condition part of the rule determines which rule may be applied to a problem. And the action part carries out the associated problem-solving steps. This complete process is called a __recognize-act cycle__.
+The __working memory__ contains the description of the current state of problems-solving and rule can write knowledge to the working memory. This knowledge match and may fire other rules.
+If there is a new situation (state) generates, then multiple production rules will be fired together, this is called conflict set. In this situation, the agent needs to select a rule from these sets, and it is called a conflict resolution.
+
+### Frame Representation
+A frame is a record like structure which consists of a collection of attributes and its values to describe an entity in the world. Frames are the AI data structure which divides knowledge into substructures by representing stereotypes situations. It consists of a collection of slots and slot values. These slots may be of any type and sizes. Slots have names and values which are called facets. 
+<p align="center">
+  <img width="400" height="300" src="frame.png">
+</p>
+
 ## Bibliografía
 Para el desarrollo del siguiente trabajo se han consultado los siguientes enlaces:  
 * [P-99: Ninety-Nine Prolog Problems](https://www.ic.unicamp.br/~meidanis/courses/mc336/2009s2/prolog/problemas/)
