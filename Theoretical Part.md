@@ -10,13 +10,13 @@ But Knowledge is a broad term, different types of knowledge are existing [3][4] 
 * __Declarative Knowledge__ – Its about statements that describe a particular object and its attributes , including some behavior in relation with it. 
 * __Structural Knowledge__ – Describes what relationship exists between concepts/ objects.
 <p align="center">
-  <img width="350" height="300" src="knowledge-representation-in-ai.png">
+  <img width="350" height="300" src="Pictures/knowledge-representation-in-ai.png">
 </p>
 
 ## Techniques of Knowledge Representation in AI
 There are 4 techniques of knowledge representation [4][5]: 
 <p align="center">
-  <img width="400" height="300" src="technics.png">
+  <img width="400" height="300" src="Pictures/technics.png">
 </p>
 
 ### Logical Representation 
@@ -31,7 +31,7 @@ This representation consist of mainly two types of relations:
 * IS-A relation (Inheritance)
 * Kind-of-relation
 <p align="center">
-  <img width="300" height="275" src="semantic.png">
+  <img width="300" height="275" src="Pictures/semantic.png">
 </p>
 
 ### Production Rules
@@ -46,7 +46,7 @@ If there is a new situation (state) generates, then multiple production rules wi
 ### Frame Representation
 A frame is a record like structure which consists of a collection of attributes and its values to describe an entity in the world. Frames are the AI data structure which divides knowledge into substructures by representing stereotypes situations. It consists of a collection of slots and slot values. These slots may be of any type and sizes. Slots have names and values which are called facets. 
 <p align="center">
-  <img width="400" height="250" src="frame.png">
+  <img width="400" height="250" src="Pictures/frame.png">
 </p>
 
 ## Bibliography
