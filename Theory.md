@@ -13,7 +13,7 @@ But Knowledge is a broad term, different types of knowledge are existing [3][4] 
 ## Techniques of Knowledge Representation in AI
 There are 4 techniques of knowledge representation [4][5]: 
 <p align="center">
-  <img width="300" height="300" src="Imagenes/Reinas1.png">
+  <img width="300" height="300" src="knowledge-representation-in-ai.png">
 </p>
 
 ## Predicados complementarios 
