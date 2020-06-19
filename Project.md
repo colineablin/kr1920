@@ -36,7 +36,7 @@ First, we would like to have an answer as in the following way for each surfer :
 [Country, First Name, Last Name, Figure]
 And we have 4 surfers, so the solution will be in the following format :
 <p align="center">
-  < src="Pictures/solutions.jpg">
+  <img height="100" src="Pictures/solutions.jpg">
 </p>
 
 Then, we have to do a list of each global attribut in order to regroupe them : for example, we know there is 4 countries : The Usa, Brazil, France and Spain. The we will do a Country List we all of these countries.
@@ -49,16 +49,17 @@ Here, usa is associated to Country1, brazil to Country2 etc …
 As we have associated each country to a fixe variable, we can’t do it with all the other attributs (First Name, Last Name and Figures).
 
 In order to respect that, we have to use the predicate « permuation »
-
-PICTURES
-
+<p align="center">
+  <img height="75" src="Pictures/permutation.jpg">
+</p>
 Using that predicate will be useful to change the variable of the associated attribut
-
-PICTURES
-
+<p align="center">
+  <img height="75" src="Pictures/permutation2.jpg">
+</p>
 In our code, we use that predicate in that way : 
-
-PICTURES
+<p align="center">
+  <img height="50" src="Pictures/names.jpg">
+</p>
 
 Here, we could think that italo is associated to FName1, kolohe to FName2 etc … But not in reality thanks to the permutation. It will also be useful to use this predicate as we will give « indications » to the variable thanks to the hints of the enigma. 
 
@@ -67,12 +68,14 @@ Here, we could think that italo is associated to FName1, kolohe to FName2 etc �
 The second part of the code is the part where we use the hints of the enigma.
 
 To do it, we have to be organised and to find an easy way to do it. Then we have decided to classify each surfer using the following predicate in a precise order : So that the code is clear and understandable. 
-
-PICTURES
+<p align="center">
+  <img height="25" src="Pictures/member.jpg">
+</p>
 
 Now we just need to use every hint using the precedent predicate :  
-
-PICTURES
+<p align="center">
+  <img height="75" src="Pictures/predicate.jpg">
+</p>
 
 Let’s explain what we did and then i twill be easy for the rest of the code.
 
@@ -90,8 +93,9 @@ Now, it’s useless to explain the following part of the code because there is n
 ## Solution of the enigma :
 
 Now, as the code is finished, we just have to try it and prolog and we have the following answers : 
-
-PICTURES
+<p align="center">
+  <img height="100" src="Pictures/solutions.jpg">
+</p>
 
 To end it, we just have to take back the enigma to answer it :
 
