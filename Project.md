@@ -64,18 +64,23 @@ Here, USA is associated to Country1, brazil to Country2 etc …
 As we have associated each country to a fixe variable, we can’t do it with all the other attributs (First Name, Last Name and Figures).
 
 In order to respect that, we have to use the predicate « permuation »
-<p align="center">
-  <img height="60" src="Pictures/permutation.jpg">
-</p>
+```
+is_permutation(Xs, Ys) :-
+  msort(Xs, Sorted),
+  msort(Ys, Sorted).
+ ```
 Using that predicate will be useful to change the variable of the associated attribut
-<p align="center">
-  <img height="75" src="Pictures/permutation2.jpg">
-</p>
+```
+?- permutation([1,2], [X,Y]).
+X = 1, Y = 2 ;
+X = 2, Y = 1 ;
+false.
+```
 In our code, we use that predicate in that way : 
-<p align="center">
-  <img height="50" src="Pictures/names.jpg">
-</p>
-
+```
+FNames = [italo, kolohe, jose, michel],
+permutation(FNames, [FName1, FName2, FName3, FName4]),
+```
 Here, we could think that Italo is associated to FName1, kolohe to FName2 etc … But not in reality thanks to the permutation. It will also be useful to use this predicate as we will give « indications » to the variable thanks to the hints of the enigma. 
 
 ### Second part of the code :
@@ -83,15 +88,15 @@ Here, we could think that Italo is associated to FName1, kolohe to FName2 etc �
 The second part of the code is the part where we use the hints of the enigma.
 
 To do it, we have to be organised and to find an easy way to do it. Then we have decided to classify each surfer using the following predicate in a precise order : So that the code is clear and understandable. 
-<p align="center">
-  <img height="25" src="Pictures/member.jpg">
-</p>
-
+```
+member([Country, First Name, Last Name, Figure], S)
+```
 Now, we just need to use every hint using the precedent predicate :  
-<p align="center">
-  <img height="60" src="Pictures/predicate.jpg">
-</p>
-
+```
+% The star surfer for the USA was a man who realized a tube
+% but his first name wasn’t Michel.
+member([usa, FName1, _, tube], S), FName1 \= michel,
+```
 Let’s explain what we did and then it will be easy for the rest of the code.
 
 We know that the surfer is american -> member([usa, _, _, _,],S),
@@ -108,9 +113,14 @@ Now, it’s useless to explain the following part of the code because there is n
 ## Solution of the enigma :
 
 Now, as the code is finished, we just have to try it and prolog and we have the following answers : 
-<p align="center">
-  <img height="100" src="Pictures/solutions.jpg">
-</p>
+```
+?- solution(S).
+[usa,kolohe,andino,tube]
+[brazil,italo,ferreira,snapback]
+[france,michel,bourez,layback]
+[spain,jose,carpio,aerial]
+false.
+```
 
 To end it, we just have to take back the enigma to answer it :
 
