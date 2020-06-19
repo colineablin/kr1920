@@ -2,14 +2,14 @@
 :calendar: 2019-2020  
 
 ## Introduction
-The enigma of __The new surf World champion__ is an enigma made by ourselves. In this enigma, you have to find who is the new surf world champion thanks hints. You have 4 nationalities, 4 first names, 4 last names and 4 figures. Each surfer has of course a first name, a last name, a nationality and he has realized one figure. 
+The enigma of __The new surf World champion__ is an enigma made by ourselves. In this enigma, you have to find who is the new surf world champion with some hints. You have 4 nationalities, 4 first names, 4 last names and 4 figures. Each surfer has of course a first name, a last name, a nationality and has realized one figure. 
 
 ## Enigma of the new surf World champion :
 * __Before the Beginning of the competition__
 
-Here comes the final step of surf worldcup competition. Four countries are representated by one surfer.
-Who will be the next world champion one year after Mr Ferreira ?
-Our bets are on the american surfer ! But let's see, the last worldchampion is still there to defend his title !
+Here comes the final step of the surf worldcup competition. Four countries are represented by one surfer each.
+Who will be the next world champion the year after Mr Ferreira ?
+Our bets are on the american surfer ! But let's see, the last world champion is still there to defend his title !
 Let's go for the competition and let's see ! 
 
 * __After the End of the competition__
@@ -39,12 +39,12 @@ And we have 4 surfers, so the solution will be in the following format :
   <img height="100" src="Pictures/solutions.jpg">
 </p>
 
-Then, we have to do a list of each global attribut in order to regroupe them : for example, we know there is 4 countries : The Usa, Brazil, France and Spain. The we will do a Country List we all of these countries.
+Then, we have to do a list of each global attribut in order to regroup them : for example, we know there are 4 countries : The USA, Brazil, France and Spain. We will do a Country List with all of these countries.
 <p align="center">
   <img height="75" src="Pictures/countries.jpg">
 </p>
 
-Here, usa is associated to Country1, brazil to Country2 etc …
+Here, USA is associated to Country1, brazil to Country2 etc …
 
 As we have associated each country to a fixe variable, we can’t do it with all the other attributs (First Name, Last Name and Figures).
 
@@ -61,7 +61,7 @@ In our code, we use that predicate in that way :
   <img height="50" src="Pictures/names.jpg">
 </p>
 
-Here, we could think that italo is associated to FName1, kolohe to FName2 etc … But not in reality thanks to the permutation. It will also be useful to use this predicate as we will give « indications » to the variable thanks to the hints of the enigma. 
+Here, we could think that Italo is associated to FName1, kolohe to FName2 etc … But not in reality thanks to the permutation. It will also be useful to use this predicate as we will give « indications » to the variable thanks to the hints of the enigma. 
 
 ### Second part of the code :
 
@@ -72,22 +72,22 @@ To do it, we have to be organised and to find an easy way to do it. Then we have
   <img height="25" src="Pictures/member.jpg">
 </p>
 
-Now we just need to use every hint using the precedent predicate :  
+Now, we just need to use every hint using the precedent predicate :  
 <p align="center">
   <img height="60" src="Pictures/predicate.jpg">
 </p>
 
-Let’s explain what we did and then i twill be easy for the rest of the code.
+Let’s explain what we did and then it will be easy for the rest of the code.
 
-We know that the surfer is american à member([usa, _, _, _,],S),
+We know that the surfer is american -> member([usa, _, _, _,],S),
 
-We know that this same man realized a tube à member([usa, _, _, tube], S),
+We know that this same man realized a tube -> member([usa, _, _, tube], S),
 
-We also that his first name wasn’t Michel (Even if it’s a beautiful name PS : Michel c’est le Brésil ) à member(usa, FName1, _, tube],S), Fname1 \= michel,
+We also know that his first name wasn’t Michel -> member(usa, FName1, _, tube],S), Fname1 \= michel,
 
-Thanks « \= », Prolog understand that the first name « FName1 » could not be michel and won’t associate FName1 or michel to the american surfer, or the surfer who realized a tube.
+Thanks to « \= », Prolog understand that the first name « FName1 » could not be Michel and won’t associate FName1 or michel to the american surfer, or the surfer who realized a tube.
 
-Now, it’s useless to explain the following part of the code because there is nothing more to know, everything is explained before and is in the same format than preceding.
+Now, it’s useless to explain the following part of the code because there is nothing more to know, everything is explained before and is in the same format than previously.
 
 
 ## Solution of the enigma :
@@ -101,7 +101,7 @@ To end it, we just have to take back the enigma to answer it :
 
 We know that the one who made an aerial is the new winner.
 
-According to the answers, the spanish sufer Jose Carpio is the new world champion with his awesome Aerial ! Congrats to him. Now, the curious would love to know where will the next world cup be.
+According to the answers, the spanish surfer Jose Carpio is the new world champion with his awesome Aerial ! Congrats to him. Now, the curious would love to know where will the next world cup be.
 
 Then, they will just have to do some research …
 
@@ -111,3 +111,6 @@ Then, they will just have to do some research …
 * [ Prolog library ](https://www.swi-prolog.org/pldoc/man?section=libpl )
 * [ Igor's practical part](https://github.com/IgorMy/RC19-20/blob/master/Evaluaci%C3%B3n/Parte%20Pr%C3%A1ctica/README.md)
 
+
+
+PS: welcome in Huelva for the next world cup competition
