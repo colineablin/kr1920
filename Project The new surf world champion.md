@@ -38,14 +38,12 @@ First, we would like to have an answer as in the following way for each surfer :
 ```
 
 And we have 4 surfers, so the solution will be in the following format :
-
 ```
-?- solution(S).
-[usa,kolohe,andino,tube]
-[brazil,italo,ferreira,snapback]
-[france,michel,bourez,layback]
-[spain,jose,carpio,aerial]
-false.
+solution(S) :-
+	S = [[Country1, FName1, LName1, Figure1],
+             [Country2, FName2, LName2, Figure2],
+             [Country3, FName3, LName3, Figure3],
+	     [Country4, FName4, LName4, Figure4]],
 ```
 
 
@@ -63,7 +61,7 @@ Here, USA is associated to Country1, brazil to Country2 etc …
 
 As we have associated each country to a fixe variable, we can’t do it with all the other attributs (First Name, Last Name and Figures).
 
-In order to respect that, we have to use the predicate « permuation »
+In order to respect that, we have to use the predicate « permutation »
 ```
 is_permutation(Xs, Ys) :-
   msort(Xs, Sorted),
