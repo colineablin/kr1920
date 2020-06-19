@@ -36,7 +36,7 @@ First, we would like to have an answer as in the following way for each surfer :
 [Country, First Name, Last Name, Figure]
 And we have 4 surfers, so the solution will be in the following format :
 <p align="center">
-  <img height="100" src="Pictures/solutions.jpg">
+  < src="Pictures/solutions.jpg">
 </p>
 
 Then, we have to do a list of each global attribut in order to regroupe them : for example, we know there is 4 countries : The Usa, Brazil, France and Spain. The we will do a Country List we all of these countries.
