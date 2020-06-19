@@ -50,7 +50,7 @@ As we have associated each country to a fixe variable, we can’t do it with all
 
 In order to respect that, we have to use the predicate « permuation »
 <p align="center">
-  <img height="75" src="Pictures/permutation.jpg">
+  <img height="60" src="Pictures/permutation.jpg">
 </p>
 Using that predicate will be useful to change the variable of the associated attribut
 <p align="center">
@@ -74,7 +74,7 @@ To do it, we have to be organised and to find an easy way to do it. Then we have
 
 Now we just need to use every hint using the precedent predicate :  
 <p align="center">
-  <img height="75" src="Pictures/predicate.jpg">
+  <img height="60" src="Pictures/predicate.jpg">
 </p>
 
 Let’s explain what we did and then i twill be easy for the rest of the code.
