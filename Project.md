@@ -33,7 +33,10 @@ Here are some hints. Good luck !
 ## Explanation of the code in Prolog :
 ### First part of the code :
 First, we would like to have an answer as in the following way for each surfer : 
+```
 [Country, First Name, Last Name, Figure]
+```
+
 And we have 4 surfers, so the solution will be in the following format :
 
 ```
@@ -48,9 +51,13 @@ false.
 
 
 Then, we have to do a list of each global attribut in order to regroup them : for example, we know there are 4 countries : The USA, Brazil, France and Spain. We will do a Country List with all of these countries.
-<p align="center">
-  <img height="75" src="Pictures/countries.jpg">
-</p>
+
+```
+% Four countries are represented. 
+	Countries = [usa, brazil, france, spain],
+	Countries = [Country1, Country2, Country3, Country4],
+```
+
 
 Here, USA is associated to Country1, brazil to Country2 etc …
 
